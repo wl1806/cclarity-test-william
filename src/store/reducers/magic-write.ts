@@ -17,6 +17,12 @@ const reducer: Reducer<any> = (
         ...state,
         requesting:true
       }
+    case actionTypes.MAGIC_WRITE.ERROR_MAGIC_WRITE:
+      return {
+        ...state,
+        error: action.payload,
+        requesting:false
+      }
     case actionTypes.MAGIC_WRITE.SUBMIT_MAGIC_WRITE:
       return {
         ...state,

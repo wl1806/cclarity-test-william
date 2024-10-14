@@ -11,3 +11,19 @@
 .active-button {
   background-color: #f6f6f6 !important;
 }
+.prompt-text{
+  color: #6d6d6d;
+}
+@media screen and (max-width: 575px) {
+  .prompt-text{
+    font-size: 14px;
+  } 
+
+.btn-prompt-img{
+  height: 12px;
+}
+.prompt-btn {
+  width:96%;
+}
+
+}

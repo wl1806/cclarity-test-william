@@ -23,8 +23,10 @@ const Landing = (props: IProps) => {
   return (
     <Layout
       className='p-0'
+      isMobile={!mq.md}
     >
       <MagicWriteInput
+        isMobile={!mq.md}
         auth={auth}
         magicWrite={magicWrite}
         MagicWrite={MagicWrite}

@@ -1,3 +1,5 @@
+import useBreakpoint from 'antd/lib/grid/hooks/useBreakpoint'
+
 import { Avatar, Button, Col, Image, Layout, Row, Typography } from 'antd'
 import './style.css'
 import { WithRouterProps } from 'next/dist/client/with-router'
@@ -16,6 +18,7 @@ interface IProps extends WithRouterProps {
   children: React.ReactNode
   className?: string
   auth: IAUthState
+  isMobile?: boolean
 }
 
 interface SIDE_MENU {
@@ -83,26 +86,64 @@ const sideMenuBot: SIDE_MENU[] = [
   }
 ]
 
-class LayoutComponent extends React.Component<IProps> {
+interface IState {
+  openSidebar: boolean;
+}
+
+class LayoutComponent extends React.Component<IProps, IState> {
   static defaultProps: IProps
 
   constructor(props: IProps) {
     super(props)
-    this.state = {}
+    this.state = {
+      openSidebar: false
+    }
+  }
+
+  handleClickOutside
+
+  componentDidMount() {
+    const siderComponent = document.getElementById('sider-component');
+    const burgerComponent = document.getElementById('burger');
+    this.handleClickOutside = (event) => {
+      if (!siderComponent?.contains(event.target) && !burgerComponent?.contains(event.target)) {
+        this.setState({openSidebar:false})
+      }
+    };
+
+    document.body.addEventListener('click', this.handleClickOutside);
+  }
+
+  componentWillUnmount() {
+    document.body.removeEventListener('click', this.handleClickOutside);
   }
 
   render() {
     const {
       children,
-      className
+      className,
+      isMobile
     } = this.props
     return (
       <Layout className={className}>
         <SEO />
-        <Header className='header'>
+        <Header
+        className={`header ${this.state.openSidebar?'blur':''}`}>
           <Row align='middle' justify='space-between' wrap={false} style={{ height: '100%' }}>
             <Col>
             <Row className=''>
+              <Col>
+                {!isMobile?<></>:
+                  <Image 
+                  id='burger'
+                  onClick={()=>this.setState({openSidebar:true})}
+                className='burger'                  
+                wrapperClassName='burger-wrapper'
+                  src={'/images/burger.png'}
+                  preview={false}
+                  />
+                }
+              </Col>
               <Col>
                 <Image 
                 wrapperClassName='logo-wrapper'
@@ -127,7 +168,40 @@ class LayoutComponent extends React.Component<IProps> {
           </Row>
         </Header>
         <Layout>
-          <Sider className='sider-wrap ph-1'>
+          {isMobile?
+          <>
+          <Sider id='sider-component' className={`sider-wrap ph-1 ${this.state.openSidebar?'sider-wrap-active':'' }`}>
+            <Col  span={24} className='sider-wrap-col'>
+              <Row>
+                <Col span={24}>
+                  {sideMenu.map(e=>{
+                    return <LayoutSideMenu 
+                    key={e.text} 
+                    image={e.image}
+                    path={e.path}
+                    text={e.text}
+                    isActive={e.isActive}
+                  />
+                  })}
+                </Col>
+              </Row>
+              <Row>
+
+                <Col span={24}>
+                <LayoutSideMenu 
+                    key={"More"} 
+                    image={'/images/more.png'}
+                    path={'/#'}
+                    text={'More'}
+                    isActive={false}
+                  />
+                </Col>
+                
+              </Row>
+            </Col>
+          </Sider>
+
+          </>:<Sider className='sider-wrap ph-1'>
             <Col  span={24} className='sider-wrap-col'>
               <Row>
                 <Col span={24}>
@@ -159,7 +233,8 @@ class LayoutComponent extends React.Component<IProps> {
               </Row>
             </Col>
           </Sider>
-          <Content>
+  }
+          <Content className={this.state.openSidebar?'blur':''}>
                 {children}
           </Content>
 

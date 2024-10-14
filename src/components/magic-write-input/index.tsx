@@ -10,10 +10,12 @@ interface IProps {
   auth: IAUthState
   magicWrite: IMagicWriteState
   MagicWrite: (data: string) => Promise<any>
+  isMobile: boolean
 }
 
 interface PromptButton {
   text: string
+  textM: string
   image: string
   textPrompt: string
 }
@@ -21,31 +23,37 @@ interface PromptButton {
 const prompts: PromptButton[] =[
   {
   text: 'My personal story',
+  textM: 'My personal story',
   image: '/images/heart.png',
   textPrompt:'This is my personal story ...'
 },
 {
   text: 'My contrarian view',
+  textM: 'My contrarian view',
   image: '/images/contrary.png',
   textPrompt:'This is my view ...'
 },
 {
   text: 'My challenge and solution',
+  textM: 'Challenge/Solution',
   image: '/images/challenge.png',
   textPrompt:'This is my solution ...'
 },
 {
   text: 'A valuable insight',
+  textM: 'A valuable insight',
   image: '/images/insight.png',
   textPrompt:'This is insight ...'
 },
 {
   text: 'What I did and learnt',
+  textM: 'What I did & learnt',
   image: '/images/check.png',
   textPrompt:'This is what I did ...'
 },
 {
   text: 'Promotion and offer',
+  textM: 'Promote an offer',
   image: '/images/promote.png',
   textPrompt:'This is my offer ...'
 }
@@ -53,46 +61,50 @@ const prompts: PromptButton[] =[
 
 
 const MagicWriteInput = (props: IProps) => {
-  const { auth, magicWrite, MagicWrite } = props
+  const { auth, magicWrite, MagicWrite,isMobile } = props
   const [input, setInput]  = useState<string>('')
 const [activePrompt, setActivePrompt] = useState<string>("")
 const [loading, setLoading] = useState(false)
-
+const [characterCount, setCharacterCount] = useState(0)
   useEffect(()=>{
     if(magicWrite.data){
       setInput(magicWrite?.data.suggestion)
+      setCharacterCount(magicWrite?.data.suggestion.length)
     }
   },[magicWrite.data?.suggestion])
 
   useEffect(()=>{
+    console.log("coba",magicWrite)
     setLoading(magicWrite.requesting||false)
-  },[magicWrite.requesting])
+  },[magicWrite])
 
   
   return (
     <Row justify='center'>
       <Col>
         <Row className='mt-16' justify='center'>
-          <Text className='text-family-open-sans text-size-20'>
+          <Text className={`text-family-open-sans ${isMobile?'text-size-16':'text-size-20'}`}>
             Hi {auth?.data?.name}, welcome to CClarity
           </Text>
         </Row>
         <Row className='mt-1' justify='center'>
-        <Text className='text-size-32 text-weight-bold text-family-montserrat'>
+        <Text className={`${isMobile?'text-size-24':'text-size-32'} text-center text-weight-bold text-family-montserrat`}>
             What do you want to write today?
           </Text>
           </Row>
-          <Row justify='center' className='prompt-wrapper mt-24'>
+          <Row justify='center' className={`prompt-wrapper ${isMobile?'mt-12':'mt-24'}`}>
           {prompts.map(e=>{
-            return <Col span={8}>
+            return <Col span={isMobile?12:8}>
               <PromptButton
+              isMobile={isMobile}
                 onClick={()=>{
                   setInput(e.textPrompt)
-                  setActivePrompt(e.text)
+                  setActivePrompt(e.image)
                 }}
                 image={e.image}
                 text={e.text}
-                active={e.text === activePrompt}
+                textM={e.textM}
+                active={e.image === activePrompt}
               />
             </Col>
           })}
@@ -101,15 +113,21 @@ const [loading, setLoading] = useState(false)
     <Input.TextArea
       value={input}
       disabled={loading}
-      onChange={(e) => setInput(e.target.value)}
+      onChange={(e) => {
+        setInput(e.target.value)
+        setCharacterCount(e.target.value.length)
+      
+      }}
       rows={10}
       placeholder=""
-      style={{ width: '70%' }}
+      className='magic-text-area'
     />
         </Row>
         <Row className='w-100 pb-20' justify='center'>
-            <Row justify='end' className='mt-1 magic-btn-wrapper'>
-
+            <Row justify='space-between' className='mt-1 magic-btn-wrapper'>
+<div>
+  {characterCount} characters
+</div>
             <Button 
             loading={loading}
             disabled={input===''} 

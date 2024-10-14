@@ -5,14 +5,16 @@ import Text from 'antd/lib/typography/Text'
 
 interface IProps {
   text: string
+  textM: string
   image: string
   onClick: () => void
   active: boolean
+  isMobile: boolean
 }
 
 
 const PromptButton = (props: IProps) => {
-  const { text, image, active, onClick } = props
+  const { text, image, active, isMobile,textM, onClick } = props
   
   return (
     <Row className='mb-1' justify='center'>
@@ -25,7 +27,7 @@ const PromptButton = (props: IProps) => {
         preview={false} src={image} />
         </Col>
         <Col>
-        <Text className='ml--5 text-family-open-sans'>{text}</Text>
+        <Text className='ml--5 prompt-text text-family-open-sans'>{isMobile?textM:text}</Text>
   </Col>
   </Row>
     </Button>

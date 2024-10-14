@@ -16,11 +16,16 @@ body {
 
   .ant-layout-header {
     &:extend(.pv-0);
-    &:extend(.ph-4);
+    padding-left: 8px;
     z-index: 998;
     position: fixed;
     width: 100%;
     max-width: @max-width;
+  }
+  @media screen and (min-width: 576px) {
+    .ant-layout-header {
+      padding-left: 32px;
+    }
   }
   .ant-layout-content {
     // overflow-y: auto; switch from auto because needed for sticky in profile page
