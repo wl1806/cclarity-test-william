@@ -1,5 +1,6 @@
-import { Button, Col, Image, Layout, Row, Typography } from 'antd'
+import { Avatar, Button, Col, Image, Layout, Row, Typography } from 'antd'
 import { Header } from 'antd/lib/layout/layout'
+import './style.css'
 // import _ from 'lodash'
 import { WithRouterProps } from 'next/dist/client/with-router'
 import NextLink from 'next/link'
@@ -13,6 +14,7 @@ import { ReduxState } from '../../store/reducers'
 // import Format from '../../utils/format'
 import SEO from '../seo'
 import { ISEO } from '../seo'
+import Text from 'antd/lib/typography/Text'
 
 const footerLinks = [
   {
@@ -78,25 +80,34 @@ class LayoutComponent extends React.Component<IProps> {
         ) : (
           <></>
         )}
-        {header ? (
-          <Header style={headerStyle}>
-            <Row align='middle' wrap={false} style={{ height: '100%' }}>
-              <Col>{header.left}</Col>
-              <Col flex='auto'>
-                {header.middle || (
-                  <Row justify='center' align='middle'>
-                    {/* <Logo target='header' /> */}
-                  </Row>
-                )}
+        <Header style={headerStyle} className='header'>
+          <Row align='middle' justify='space-between' wrap={false} style={{ height: '100%' }}>
+            <Col>
+            <Row className=''>
+              <Col>
+                <Image 
+                wrapperClassName='logo-wrapper'
+                className='logo-inner'
+                  src='/images/logo.png'
+                  preview={false}
+                />
               </Col>
-              <Col>{header.right}</Col>
+              <Col>
+                <Text className='trial-text ph-1'>
+                  TRIAL                  
+                </Text>
+              </Col>
             </Row>
-          </Header>
-        ) : (
-          <></>
-        )}
-        {customHeader || <></>}
-
+            </Col>
+            <Col>
+              <Avatar
+                size={40}
+                src='https://iili.io/2HyddE7.jpg'
+              />
+            </Col>
+          </Row>
+        </Header>
+      
         <Layout>
           {children}
           {footer ? (

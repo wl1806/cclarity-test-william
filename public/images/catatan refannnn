@@ -1,0 +1,45 @@
+fix inggress detailnya, network ke database ada yg bs di improve ga?
++ request inggress nya kecil, kena timeout 
+++ error connection reset -> dr inggress gagal
+++ error upstream timeout -> appsnya
++ naikin jumlah replica pod inggress
++ ketika tracingnya ga masuk, ada sesuatu di inggress mungkin
++ network bisa di ignore, kecuali ada firewall
++ inggress -> load balancer app
++ tcp load balancer buat http/service yang managed
+
+vm/redis itu engga public ip
++ kapasitas redis
++ tahu darimana kapasitas penuh -> grafana
++ redis 1 core
++ minta tolong tambah redis dev ke grafana
++ kalau penuh, cek pas buka jsonnya
++ cek config
++ redis savemode/flushmode
++ kalau buat temp data yg bole ilang, savemode nya matiin aja
++ klo insert banyak tb2 jadi read only -> karena savemode nyala
+
+rumus -> apakah better pod besar sedikit, atau pod kecil banyak
++ hi availibility -> agar merata
++ ketika non peak hour -> bisa lebih
++ disk itu murah
++ 940m itu udah punya kita semua, 
++ 1 node 1 pod utk aplikasi yg sama, karena request ada limit, 
++ kasih contoh yg log ga muat ke Refan
+
+grafana cara baca 
+- kenapa bs lewat 100%
+- persentase pemakaian pod nya 
++ prometheus nextgen
++ kubernetes view pods
++ order n sort diilangin, coba querynya disimpelin?
++ coba jadi 8 pod
++ knp pemakaian rsc nya kecil? golang ada max request yg bs di handle?
++ CEK NET HTTP NYA BEEGO MAX CONCURRENT 
+
+jelasin banner, itu query udah kecil, index udah ada, tapi kok masi lemot
+gedein ukuran node, skrg ada pending 2 (max account 13, tp muat 11)
+lens workload deployment 0.8 artinya apa? kan harusnya cpu nya ada banyak
++ sum sort group by limit, sebaiknya dari golang aja
++ content masalah? wkkw
++ count -> mungkin bikin io krena pas lg ngecount, terus yg query asli nungguin

@@ -24,7 +24,7 @@ class SEO extends React.Component<ISEO> {
         <title>{`${title} | fe-template`}</title>
         <link
           rel='icon'
-          href='/images/icon.ico'
+          href='/images/logo.ico'
           sizes='any'
           type='image/ico+xml'
         />
@@ -50,7 +50,7 @@ class SEO extends React.Component<ISEO> {
 }
 
 SEO.defaultProps = {
-  title: 'fe-template',
+  title: 'CCLarity - William FE',
   description: '',
   keywords: 'fe-template',
   image: '/images/logo.png',

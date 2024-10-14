@@ -16,15 +16,6 @@ const Landing = () => {
   return (
     <Layout
       className='p-0'
-      header={
-        !mq.md
-          ? {
-              left: <></>,
-              middle: <></>,
-              right: <></>
-            }
-          : undefined
-      }
       // customHeader={CustomHeader(mq, router.pathname)}
       // customFooter={CustomFooter(mq)}
       seo={{
