@@ -28,11 +28,11 @@ const Landing = (props: IProps) => {
     <Layout
       className='p-0'
     >
-      <Row justify='center' className={mq.md ? 'mt-12' : 'mt-2'}>
-        <Col xs={24} md={18}>
+      {/* <Row justify='center' className={mq.md ? 'mt-12' : 'mt-2'}>
+        <Col xs={24} md={18}> */}
           Content
-        </Col>
-      </Row>
+        {/* </Col>
+      </Row> */}
     </Layout>
   )
 }

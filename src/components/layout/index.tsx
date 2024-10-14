@@ -1,5 +1,4 @@
 import { Avatar, Button, Col, Image, Layout, Row, Typography } from 'antd'
-import { Content, Header } from 'antd/lib/layout/layout'
 import './style.css'
 import { WithRouterProps } from 'next/dist/client/with-router'
 import { NextRouter, withRouter } from 'next/router'
@@ -10,15 +9,9 @@ import IAUthState from '../../interfaces/states/auth'
 import { ReduxState } from '../../store/reducers'
 import SEO from '../seo'
 import Text from 'antd/lib/typography/Text'
-import Sider from 'antd/lib/layout/Sider'
+import LayoutSideMenu from './layout-side-menu'
 
-const footerLinks = [
-  {
-    id: 'ig',
-    url: 'https://www.instagram.com/fe-template',
-    img: 'https://www.instagram.com/fe-template.png'
-  }
-]
+const { Content, Sider, Header }   = Layout
 interface IProps extends WithRouterProps {
   children: React.ReactNode
   className?: string
@@ -36,7 +29,8 @@ const sideMenu: SIDE_MENU[] = [
 {
   image:'/images/btn_magic.png',
   path:'/#',
-  text:'Magic Write'
+  text:'Magic Write',
+  isActive: true
 },
 {
   image:'/images/btn_post.png',
@@ -49,12 +43,12 @@ const sideMenu: SIDE_MENU[] = [
   text:'Analysis'
 },
 {
-  image:'/images/btn_ideas.png',
+  image:'/images/btn_idea.png',
   path:'/#',
   text:'Ideas'
 },
 {
-  image:'/images/btn_templates.png',
+  image:'/images/btn_template.png',
   path:'/#',
   text:'Templates'
 },
@@ -73,12 +67,12 @@ const sideMenuBot: SIDE_MENU[] = [
     text:'Billing'
   },
   {
-    image:'/images/btn_ideas.png',
+    image:'/images/btn_idea.png',
     path:'/#',
     text:'Payment'
   },
   {
-    image:'/images/btn_help.png',
+    image:'/images/help.png',
     path:'/#',
     text:'Help'
   },
@@ -133,14 +127,39 @@ class LayoutComponent extends React.Component<IProps> {
           </Row>
         </Header>
         <Layout>
-          <Sider>
-            {sideMenu.map(e=>{
-              return 
-            })}
-            
+          <Sider className='sider-wrap'>
+            <Col  span={24} className='sider-wrap-col'>
+              <Row>
+                <Col span={24}>
+                  {sideMenu.map(e=>{
+                    return <LayoutSideMenu 
+                    key={e.text} 
+                    image={e.image}
+                    path={e.path}
+                    text={e.text}
+                    isActive={e.isActive}
+                  />
+                  })}
+                </Col>
+              </Row>
+              <Row>
+
+                <Col span={24}>
+                  {sideMenuBot.map(e=>{
+                    return <LayoutSideMenu 
+                    key={e.text} 
+                    image={e.image}
+                    path={e.path}
+                    text={e.text}
+                    isActive={e.isActive}
+                  />
+                  })}
+                </Col>
+                
+              </Row>
+            </Col>
           </Sider>
           <Content>
-            
                 {children}
           </Content>
 

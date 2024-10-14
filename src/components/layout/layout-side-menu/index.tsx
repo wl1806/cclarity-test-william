@@ -3,7 +3,6 @@ import React from 'react'
 import { useRouter } from 'next/router'
 import Text from 'antd/lib/typography/Text'
 
-
 interface IProps {
   text: string
   path: string
@@ -21,9 +20,9 @@ const LayoutSideMenu = (props: IProps) => {
   const router = useRouter()
   
   return (
-    <Row onClick={()=>router.push(path)}>
+    <Row onClick={()=>router.push(path)} className='mv-2 use-pointer' style={{placeContent:'center'}}>
                 <Col>
-                  <Row>
+                  <Row justify='center'>
                     <Image
                       wrapperClassName='side-menu-img-wrap'
                       className='side-menu-img'
@@ -31,8 +30,8 @@ const LayoutSideMenu = (props: IProps) => {
                       src={image}
                     />
                   </Row>
-                  <Row>
-                    <Text>
+                  <Row justify='center'>
+                    <Text className={isActive?'active-side-menu':''}>
                       {text}
                     </Text>
                   </Row>

@@ -18,3 +18,28 @@
 .header{
   border-bottom: 1px solid #E7E7E7;
 }
+
+.side-menu-img-wrap{
+
+}
+
+.side-menu-img{
+  width: 40px;
+}
+
+.active-side-menu{
+  color: #8331ec
+}
+.sider-wrap{
+  border-right: 1px solid #E7E7E7;
+  min-width: 80px !important;
+  max-width: 80px !important;
+  width: 80px !important;
+}
+.sider-wrap-col{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh; /* Set a height to allow space between */
+  padding-top:62px;
+}
