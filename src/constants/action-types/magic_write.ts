@@ -1,0 +1,5 @@
+const SUBMIT_MAGIC_WRITE = 'SUBMIT_MAGIC_WRITE'
+
+export default {
+  SUBMIT_MAGIC_WRITE
+}

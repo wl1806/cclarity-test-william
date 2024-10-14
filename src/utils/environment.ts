@@ -8,7 +8,8 @@ const CONFIGS = {
     STORAGE_DOMAIN: '.dev.fe-template.com',
     GTM_CONTAINER_ID: '',
     USE_METRIC: false,
-    NO_INDEX: true
+    NO_INDEX: true,
+    IS_DEBUG: true
   },
   PROD: {
     API_URL: 'http://localhost:5100',
@@ -17,7 +18,8 @@ const CONFIGS = {
     STORAGE_DOMAIN: '.dev.fe-template.com',
     GTM_CONTAINER_ID: '',
     USE_METRIC: false,
-    NO_INDEX: false
+    NO_INDEX: false,
+    IS_DEBUG: true
   }
 }
 

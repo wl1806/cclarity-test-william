@@ -1,18 +1,18 @@
 import { Reducer } from 'redux'
 
 import BaseStateDefault from '../../constants/state'
-import IAuthState from '../../interfaces/states/auth'
+import IMagicWriteState from '../../interfaces/states/magic-write'
 import actionTypes from '../../constants/action-types'
-const initialState: IAuthState = {
+const initialState: IMagicWriteState = {
   ...BaseStateDefault,
 }
 
 const reducer: Reducer<any> = (
-  state: IAuthState = initialState,
+  state: IMagicWriteState = initialState,
   action: any
-): IAuthState => {
+): IMagicWriteState => {
   switch (action.type) {
-    case actionTypes.Auth.GET_USER:
+    case actionTypes.MAGIC_WRITE.SUBMIT_MAGIC_WRITE:
       return {
         ...state,
         data: action.payload

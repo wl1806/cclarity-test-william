@@ -7,17 +7,16 @@ import ENV from '../../utils/environment'
 import Storage from '../../utils/general-particle/utils/storage'
 
 
-const GetUser = (ctx?: any) => (dispatch: Dispatch<AnyAction>) => {
+const GetSuggestion = (text: string, ctx?: any) => (dispatch: Dispatch<AnyAction>) => {
   // hit api then return
   dispatch(
-    action(ActionTypes.Auth.GET_USER, {
-      name: 'William'   ,
-      image: 'https://iili.io/2HyddE7.jpg'
+    action(ActionTypes.MAGIC_WRITE.SUBMIT_MAGIC_WRITE, {
+      suggestion: text+' Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua'
     })
   )
   
 }
 
 export default {
-  GetUser
+  GetSuggestion
 }

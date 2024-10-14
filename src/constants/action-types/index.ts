@@ -1,5 +1,7 @@
 import Auth from './auth'
+import MAGIC_WRITE from './magic_write'
 
 export default {
-  Auth
+  Auth,
+  MAGIC_WRITE
 }
