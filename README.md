@@ -1,11 +1,3 @@
-# fe-template
-
-fe-template Web App
-
-## Getting Started
-
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
-
 ### Prerequisites
 
 ```
@@ -25,14 +17,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 ```
 * yarn dev
-```
-
-#### Using particles
-
-```
-* make sure you have set up your BitBucket account [SSH key](https://support.atlassian.com/bitbucket-cloud/docs/set-up-an-ssh-key/)
-* install all necessary particles. dont forget to yarn link.
-* yarn link '{{particle-name}}'
+* can be accessed on localhost:3001
 ```
 
 ### Production build
@@ -41,23 +26,6 @@ These instructions will get you a copy of the project up and running on your loc
 * yarn build
 * yarn start
 ```
-
-## Build Docker Image on local
-
-```
-yarn build:docker:dev
-docker run -d -p 3004:3004 fe-web
-```
-
-## Deployment
-
-- Development Branch: for development source of branching etc
-- Staging: Merge to this branch will trigger deployment pipeline to [Staging server]
-- Master: Merge to this branch will trigger deployment pipeline to Master server(incoming)
-
-## Built With
-
-- [NEXT](https://nextjs.org/) - The web FE framework
 
 ## Directory Structure
 
@@ -72,15 +40,9 @@ docker run -d -p 3004:3004 fe-web
 | styles     | Common styles.                                                                                                                                                                             |
 | scripts    | Bash script files                                                                                                                                                                          |
 
-### Name Convention
+### Note for CCLarity
 
-#### File / Folder
-
-- Use lower case string separated by dash(-) knows as kebab-case
-- Start refactor when a file is more than 400 lines
-
-#### Function / Variable / ClassName
-
-- Use pascal-case for function and class name
-- Use camel-case for variable name
-- Use kebab-case for style class name
+- I used redux reducer state management, the index can be seen here src/store/reducers/index.ts, with less css management for global css and style.css file for components
+- I put error handler and character count for the challenge, but run out of time for the light/dark mode
+- For error handler, can be seen on src/store/actions/magic-write.ts, there are const error in line 15 that can be changed to test the error handler
+- I pushed this code on github https://github.com/wl1806/cclarity-test-william
