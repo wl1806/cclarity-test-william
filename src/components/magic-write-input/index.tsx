@@ -74,9 +74,8 @@ const [characterCount, setCharacterCount] = useState(0)
   },[magicWrite.data?.suggestion])
 
   useEffect(()=>{
-    console.log("coba",magicWrite)
     setLoading(magicWrite.requesting||false)
-  },[magicWrite])
+  },[magicWrite.requesting])
 
   
   return (
