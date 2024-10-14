@@ -31,7 +31,7 @@ const LayoutSideMenu = (props: IProps) => {
                     />
                   </Row>
                   <Row justify='center'>
-                    <Text className={isActive?'active-side-menu':''}>
+                    <Text className={isActive?'active-side-menu':'inactive-side-menu'}>
                       {text}
                     </Text>
                   </Row>

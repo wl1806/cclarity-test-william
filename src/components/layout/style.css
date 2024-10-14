@@ -30,6 +30,10 @@
 .active-side-menu{
   color: #8331ec
 }
+.inactive-side-menu{
+  color: #3B3B3B;
+}
+
 .sider-wrap{
   border-right: 1px solid #E7E7E7;
   min-width: 80px !important;
