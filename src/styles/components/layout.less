@@ -1,0 +1,559 @@
+@max-width: 1440px;
+@sider-width: 230px;
+
+body {
+  background-color: #bdc3c7 !important;
+  &.background-transparent {
+    background-color: rgba(0, 0, 0, 0) !important;
+  }
+}
+.ant-layout {
+  position: relative;
+  min-height: 100vh !important;
+  max-width: @max-width;
+  margin: auto;
+  width: 100%;
+
+  .ant-layout-header {
+    &:extend(.pv-0);
+    &:extend(.ph-4);
+    z-index: 998;
+    position: fixed;
+    width: 100%;
+    max-width: @max-width;
+  }
+  .ant-layout-content {
+    // overflow-y: auto; switch from auto because needed for sticky in profile page
+    // was auto to fix thing in hypes detail page, need to recheck
+    overflow-y: visible;
+  }
+
+  .mobile-header {
+    &:extend(.box-shadow);
+    &:extend(.bg-white);
+    max-width: 100vw;
+    min-height: @header-size;
+    height: @header-size;
+    position: fixed;
+    top: 0;
+    z-index: 998;
+    width: 100%;
+  }
+  .ant-breadcrumb {
+    &-link {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+  &.ant-layout-has-sider {
+    @media screen and (min-width: 993px) {
+      .mobile-header {
+        max-width: calc(100% - @sider-width);
+      }
+    }
+    @media screen and (min-width: @max-width) {
+      .mobile-header {
+        max-width: calc(@max-width - @sider-width);
+      }
+    }
+  }
+}
+.ant-layout-sider {
+  .ant-layout-sider-zero-width-trigger {
+    position: absolute;
+    top: 0;
+    right: calc(@header-size * -1);
+    height: calc(@header-size - calc(@padding-size * 4));
+    width: calc(@header-size - calc(@padding-size * 4));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &:extend(.m-2);
+    &:extend(.border-radius-4);
+  }
+  &.ant-layout-sider-collapsed {
+    .ant-layout-sider-zero-width-trigger {
+      right: 0;
+    }
+  }
+  .ant-menu-inline,
+  .ant-menu-sub,
+  .sider-menu {
+    background-color: transparent !important;
+  }
+  .sider-menu {
+    a {
+      color: inherit;
+    }
+    .ant-menu-item,
+    .ant-menu-submenu-title {
+      &:extend(.mh-0);
+      &:extend(.mt-0);
+      &:extend(.mb-1);
+      &:extend(.ph-2);
+      height: unset !important;
+
+      .ant-col,
+      .ant-row {
+        min-height: 42px;
+      }
+
+      .ant-typography {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+
+    .ant-menu-item-selected {
+      background-color: unset !important;
+      .ant-typography {
+        &:extend(.text-color-primary-purple);
+      }
+      .ant-col {
+        border: solid 1px @primary-purple;
+        border-radius: @padding-size;
+        background-color: transparent;
+      }
+    }
+
+    .ant-menu-item-selected {
+      &::after {
+        content: unset !important;
+      }
+    }
+  }
+  .username {
+    &:extend(.text-size-16);
+    &:extend(.text-height-24);
+    &:extend(.text-weight-medium);
+    max-width: 120px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .ant-layout-sider-children {
+    position: fixed;
+    width: inherit;
+    height: 100vh;
+    overflow: auto;
+    &:extend(.pb-2);
+
+    &::-webkit-scrollbar {
+      width: 10px;
+    }
+    /* Track */
+    &::-webkit-scrollbar-track {
+      background: #f1f1f1;
+    }
+
+    /* Handle */
+    &::-webkit-scrollbar-thumb {
+      background: #d5d5d5;
+    }
+
+    /* Handle on hover */
+    &::-webkit-scrollbar-thumb:hover {
+      background: #bdbdbd;
+    }
+  }
+}
+
+.full-page {
+  min-height: 100vh;
+}
+.layout-wrapper {
+  padding: calc(8 * @padding-size) calc(4 * @padding-size);
+}
+.layout-inner {
+  width: 825px;
+  max-width: 100%;
+}
+.main-container {
+  width: 445px;
+  max-width: 100%;
+}
+.side-container {
+  width: 350px;
+  max-width: 100%;
+}
+
+@media (max-width: 1200px) {
+  .layout-inner {
+    width: 100%;
+    padding: 0 calc(@padding-size * 4) !important;
+  }
+  .main-container,
+  .side-container {
+    width: 100%;
+  }
+}
+
+@media (max-width: 992px) {
+  .ant-layout-sider {
+    position: fixed !important;
+    height: 100vh;
+    z-index: 1000;
+    right: 0px;
+  }
+  .sider-overlay {
+    width: 100vw;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    position: fixed;
+    height: 100vh;
+  }
+}
+
+.menu-selected {
+  border: solid 1px @primary-purple;
+  border-radius: 8px;
+  background-color: @light-blue;
+}
+
+.layout-footer-container {
+  flex-direction: column;
+  align-items: center;
+}
+
+@media (min-width: 576px) {
+  .layout-footer-container {
+    flex-direction: row;
+  }
+}
+
+.layout-sidebar-icon-container {
+  height: 25px;
+  max-width: 24px !important;
+}
+
+.layout-icon-container {
+  min-width: 0 !important;
+  svg {
+    margin-right: 9px;
+    margin-bottom: 1px;
+  }
+}
+
+.icon-badge-counter {
+  .ant-badge-count {
+    &:extend(.text-size-10);
+    &:extend(.ph--5);
+  }
+}
+
+.icon-badge-counter-menu {
+  .ant-badge-count {
+    padding: 3px 5px;
+    &:extend(.bg-warning-main);
+    &:extend(.text-color-neutral-100);
+    &:extend(.text-s-medium);
+    height: auto !important;
+    border-radius: 20px;
+    width: 30px;
+    box-shadow: unset !important;
+    span {
+      height: 15px;
+    }
+  }
+}
+
+.cr-badge-user-fullname {
+  max-width: 126px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cr-onborading-snackbar-icon {
+  width: 32px;
+  height: 32px;
+  border: 1px solid;
+  border-radius: 50%;
+  &:extend(.cr-centered);
+}
+
+@keyframes ldio-1flyi77lfbg {
+  0% {
+    top: 42px;
+    left: 42px;
+    width: 0;
+    height: 0;
+    opacity: 1;
+  }
+  100% {
+    top: 16px;
+    left: 16px;
+    width: 52px;
+    height: 52px;
+    opacity: 0;
+  }
+}
+.ldio-1flyi77lfbg div {
+  position: absolute;
+  border-width: 8px;
+  border-style: solid;
+  opacity: 1;
+  border-radius: 50%;
+  animation: ldio-1flyi77lfbg 5s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+}
+.ldio-1flyi77lfbg div:nth-child(1) {
+  border-color: #f6274c;
+  animation-delay: 0s;
+}
+.ldio-1flyi77lfbg div:nth-child(2) {
+  border-color: #f6274c;
+  animation-delay: -2.5s;
+}
+.loadingio-spinner-ripple-zc3lu7d1ur {
+  width: 18px;
+  height: 18px;
+  display: inline-block;
+  overflow: hidden;
+  background: none;
+}
+.ldio-1flyi77lfbg {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform: translateZ(0) scale(0.18);
+  backface-visibility: hidden;
+  transform-origin: 0 0; /* see note above */
+}
+.ldio-1flyi77lfbg div {
+  box-sizing: content-box;
+}
+
+.ant-btn.button-main-large {
+  min-width: 144px;
+  height: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: @primary-main;
+  border: none;
+  border-radius: 8px;
+  padding: 0 24px;
+}
+
+.ant-btn.button-main-large:hover,
+.ant-btn.button-secondary-large:focus {
+  background: @primary-main;
+}
+
+.ant-btn.button-secondary-large {
+  width: 144px;
+  height: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: @primary-surface;
+  border: none;
+  border-radius: 8px;
+  padding: 0;
+}
+
+.ant-btn.button-secondary-large:hover,
+.ant-btn.button-secondary-large:focus {
+  background: @primary-surface;
+}
+
+.ant-layout .ant-layout-header.landing-header-container {
+  height: auto;
+  padding: 24px 50px !important;
+  @media (max-width: 768px) {
+    padding: 24px 24px !important;
+  }
+}
+
+.ant-layout .ant-layout-header.landing-header-container-mobile {
+  height: auto;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.05);
+  background: @white;
+  padding: 20px 20px !important;
+}
+
+.landing-image-1 {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.landing-image-2 {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.landing-image-3 {
+  position: absolute;
+  top: 20px;
+  right: 0;
+}
+
+.landing-image-3-2 {
+  position: absolute;
+  top: 230px;
+  right: 0;
+}
+
+.landing-image-4 {
+  position: absolute;
+  top: 350px;
+  right: 24px;
+}
+
+.landing-title {
+  font-size: 56px;
+  line-height: 62px;
+  font-weight: 600;
+}
+
+.landing-title2 {
+  font-size: 40px;
+  line-height: 46px;
+  font-weight: 500;
+}
+
+.landing-content {
+  margin-top: 96px;
+}
+
+.ant-layout-footer.landing {
+  padding: 0 !important;
+}
+
+.section2-container {
+  position: relative;
+  margin-top: 80px;
+  .mask {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.ant-row.icon-wrapper-1 {
+  position: relative;
+  .icon-capsule {
+    z-index: 2;
+  }
+  .capsule-1 {
+    position: absolute;
+    bottom: 5%;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 157px;
+    background-color: @neutral-40;
+    height: 34px;
+    border-radius: 22px;
+    z-index: 1;
+  }
+}
+
+.ant-row.circle-number {
+  background-color: @success-surface;
+  width: 43px;
+  height: 43px;
+  border-radius: 43px;
+}
+
+.ant-row.testi-container {
+  border-radius: 22px;
+  padding: 40px 62px;
+  min-height: 363px;
+}
+
+@media (max-width: 768px) {
+  .ant-row.testi-container {
+    min-height: unset;
+  }
+}
+
+.ant-row.testi-wrapper {
+  position: relative;
+  .quote-start {
+    position: absolute;
+    left: -15px;
+    top: -15px;
+    z-index: 1;
+  }
+  .quote-end {
+    position: absolute;
+    right: -15px;
+    bottom: -15px;
+    z-index: 1;
+  }
+  .dots {
+    position: absolute;
+    bottom: 16px;
+    right: 40px;
+    z-index: 1;
+    .circle-paging {
+      width: 7px;
+      height: 7px;
+      border-radius: 7px;
+      background: @neutral-50;
+      margin: 0 4px;
+    }
+    .circle-paging-active {
+      width: 9px;
+      height: 9px;
+      border-radius: 9px;
+      background: @primary-main;
+      margin: 0 4px;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .ant-row.testi-wrapper {
+    position: relative;
+    .quote-start {
+      position: absolute;
+      left: -10px;
+      top: -10px;
+    }
+    .quote-end {
+      position: absolute;
+      right: -10px;
+      bottom: -10px;
+    }
+  }
+}
+
+.ant-row.box-shadow-faq {
+  border: 1px solid @neutral-50;
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+
+.ant-typography.title-quote-wrapper {
+  position: relative;
+  .title-quote-wrapper-start {
+    position: absolute;
+    top: 0;
+    left: -20px;
+  }
+  .title-quote-wrapper-end {
+    position: absolute;
+    right: -20px;
+    bottom: 0;
+  }
+}
+
+.ant-row.rocket-wrapper {
+  position: relative;
+  border-radius: 72px 16px 16px 16px;
+  background: @warning-border;
+  padding: 24px;
+  margin-bottom: 72px;
+  .rocket-position {
+    position: absolute;
+    top: -40px;
+    right: -40px;
+  }
+}

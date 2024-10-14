@@ -1,0 +1,84 @@
+.progress {
+  position: relative;
+  display: flex;
+  height: 20px;
+  width: 100%;
+  border-radius: 34px;
+  overflow: hidden;
+  &:extend(.text-s-medium);
+}
+.hypes-progress-bar-near-end {
+  > div:nth-child(1) {
+    background: repeating-linear-gradient(
+      45deg,
+      #f6274c 6.03%,
+      #ffde33 20.4%,
+      #f6274c 30.03%
+    );
+    background-size: 1500% 100%;
+    color: @white;
+    animation: rainbow 10s linear infinite !important;
+    position: absolute;
+    top: 1px;
+    left: 0px;
+    right: 1px;
+    bottom: 1px;
+  }
+}
+.back {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background: @primary-purple;
+  color: @light-blue;
+}
+
+.front {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: @light-blue;
+  color: @primary-purple;
+  transition: clip-path 1s linear;
+}
+
+.back-done {
+  .back;
+  background: @second-light-blue;
+  color: @white;
+}
+
+.back-animated {
+  .back;
+  background: #0d43fb;
+  color: @white;
+  position: absolute;
+  top: 1px;
+  left: 0px;
+  right: 1px;
+  bottom: 1px;
+}
+
+@keyframes move {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 30px 0;
+  }
+}
+
+@keyframes rainbow {
+  0% {
+    background-position: 100% 0%;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}

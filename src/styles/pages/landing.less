@@ -1,0 +1,534 @@
+.section-landing-featured-talent {
+  background-image: url('https://instagram.com/asdf.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+.landing-page-hero-video {
+  height: 200px;
+}
+@media (min-width: 768px) {
+  .landing-page-hero-video {
+    height: 300px;
+  }
+}
+#header-video-wrapper {
+  &:extend(.use-pointer);
+  position: relative;
+  svg {
+    transform: translate3d(-50%, -50%, 0);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+  }
+}
+.landing-video-popup-container {
+  > div {
+    top: 0 !important;
+    width: 100% !important;
+  }
+  background-color: rgba(0, 0, 0, 0.85);
+  .ant-modal-content {
+    background-color: transparent;
+    box-shadow: none;
+    text-align: center;
+  }
+  .ant-modal-body {
+    padding: 0;
+  }
+}
+.landing-video-popup {
+  width: 100%;
+}
+@media (min-width: 1200px) {
+  .landing-video-popup-container {
+    .ant-modal-body {
+      padding: 24px;
+    }
+  }
+  .landing-video-popup {
+    width: 90%;
+  }
+}
+
+@media (max-width: 576px) {
+  .section-landing-hero h1 {
+    text-align: center !important;
+  }
+  .section-landing-hero-text {
+    text-align: center !important;
+  }
+}
+
+.always-control::-webkit-media-controls-panel {
+  display: flex !important;
+  opacity: 1 !important;
+}
+
+.no-control::-webkit-media-controls-panel {
+  display: none !important;
+  opacity: 0 !important;
+}
+
+.section-landing-button-header-button {
+  height: 40px;
+  display: flex;
+  align-items: center;
+}
+
+.section-landing-button-header {
+  font-size: 12px;
+  margin-bottom: 50px;
+  margin-top: 0px;
+}
+
+.section-landing-hero {
+  background-image: url('https://google.com/background.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  min-height: 700px;
+  margin-bottom: -20px;
+}
+
+.landing-tipping-text {
+  text-align: -webkit-center;
+  text-align: center;
+}
+
+.section-landing-hero h1 {
+  font-size: 30px;
+  line-height: 40px;
+}
+
+.section-landing-title-content-hypes {
+  margin: 30px 0px;
+}
+
+.section-landing-text-content {
+  margin: 0 16px;
+}
+
+.section-creator-tools {
+  padding: 0 5px;
+}
+
+.section-landing-tipping-content {
+  justify-content: space-around;
+}
+
+.section-landing-pages-fe-template-tools-title {
+  padding-top: 60px;
+}
+
+.section-landing-pages-fe-template-tools-text {
+  padding-bottom: 50px;
+}
+
+.fe-template-hypes-container {
+  max-width: 600px !important;
+}
+
+.fe-template-hypes-container .ant-row {
+  place-content: center;
+  text-align: center;
+}
+
+.landing-page-footer-text {
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.landing-page-image-container {
+  margin-right: 15px;
+  margin-left: 10px;
+}
+
+.landing-page-image-container > div {
+  width: 100%;
+}
+
+.landing-page-current-hype-container {
+  margin-top: 20px;
+}
+
+.landing-page-current-hype-opening-container {
+  text-align: center;
+}
+
+.landing-page-current-hype-title {
+  margin: auto;
+}
+
+.landing-page-current-hypes-button {
+  place-content: center;
+}
+
+.landing-hero-text-container {
+  padding-top: 35px;
+}
+
+.landing-hypes-button-desc {
+  display: none;
+}
+
+.ant-typography-ellipsis {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.landing-page-footer-text-2 {
+  margin-top: -5px;
+}
+
+@media (min-width: 576px) {
+  .section-landing-hero h1 {
+    font-size: 60px;
+    line-height: 60px;
+    max-width: 620px;
+  }
+
+  .section-landing-hero-text {
+    font-size: 20px !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .landing-page-footer-text {
+    font-size: 48px;
+  }
+
+  .section-landing-pages-fe-template-tools-text {
+    padding-bottom: 80px;
+  }
+
+  .landing-page-current-hype-container {
+    margin-top: 40px;
+  }
+
+  .landing-header-buttons-big {
+    height: 40px !important;
+    font-size: 24px !important;
+    padding-top: 4px !important;
+  }
+
+  .landing-page-current-hype-opening-container {
+    padding-right: 80px;
+    padding-left: 80px;
+    margin-bottom: 50px;
+  }
+
+  .section-landing-text-content {
+    margin: 0;
+  }
+  .landing-hero-text-container {
+    padding-top: 75px;
+  }
+
+  .section-landing-title-content-hypes {
+    margin-top: 80px;
+  }
+
+  .section-landing-pages-fe-template-tools-title {
+    padding-top: 200px;
+  }
+
+  .section-landing-title-content {
+    justify-content: space-around;
+  }
+}
+
+.section-landing-subscription-content {
+  justify-content: space-around;
+}
+
+@media (min-width: 1024px) {
+  .landing-page-current-hype-opening-container {
+    padding-right: 40px;
+    padding-left: 40px;
+  }
+  .section-landing-tipping-content {
+    margin-top: 50px;
+    margin-bottom: 30px;
+  }
+  .section-landing-tipping-text {
+    max-width: 410px;
+  }
+  .section-landing-pages-fe-template-tools-title {
+    padding-top: 300px;
+  }
+  .section-landing-subscription-content {
+    margin-top: 120px;
+    margin-bottom: 30px;
+    justify-content: flex-end;
+  }
+  .section-landing-subscription-text {
+    max-width: 360px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .section-landing-button-header-button {
+    padding: 0 20px !important;
+    height: 40px !important;
+    display: flex !important;
+    align-items: center !important;
+  }
+
+  .landing-page-current-hypes-button {
+    place-content: baseline;
+  }
+
+  .landing-hypes-button-desc {
+    display: inline-block;
+  }
+
+  .landing-page-current-hype-title {
+    margin: initial;
+    max-width: 300px;
+  }
+
+  .landing-page-current-hype-opening-container {
+    padding-right: 40px;
+    margin-right: -100px;
+    text-align: left;
+  }
+
+  .landing-page-current-hype-desc {
+    max-width: 280px;
+    margin-bottom: 5px;
+  }
+
+  .landing-page-footer-text-container {
+    max-width: 800px;
+  }
+
+  .landing-page-footer-text {
+    font-size: 60px;
+  }
+
+  .section-landing-button-header {
+    margin-top: 0px;
+    font-size: 20px;
+    margin-bottom: 50px;
+  }
+
+  .landing-page-header-logo {
+    margin-left: 50px;
+  }
+
+  .landing-page-header-buttons-container {
+    margin-right: 50px;
+  }
+
+  .landing-page-footer-text-2 {
+    margin-top: -30px;
+  }
+
+  .section-landing-pages-fe-template-tools-text {
+    margin-top: 0;
+    margin-bottom: 50px;
+  }
+
+  .fe-template-hypes-container {
+    max-width: 400px !important;
+    margin-left: 40px !important;
+  }
+
+  .fe-template-hypes-container .ant-row {
+    place-content: inherit;
+    text-align: inherit;
+  }
+
+  .landing-tipping-text {
+    text-align: -webkit-left;
+    text-align: left;
+    padding-right: 32px;
+  }
+
+  .section-landing-pages-fe-template-tools-title {
+    padding-top: 400px;
+  }
+
+  .section-landing-title-content {
+    justify-content: start;
+  }
+
+  .section-landing-tipping-content {
+    margin-top: 120px;
+    margin-bottom: 30px;
+  }
+
+  .section-landing-hero h1 {
+    line-height: 70px;
+    max-width: max-content !important;
+  }
+
+  .landing-hero-text-container {
+    padding-left: 22px;
+  }
+
+  .section-landing-hero-text {
+    margin-top: 20px !important;
+    max-width: 496px !important;
+    font-size: 20px !important;
+  }
+}
+
+@media (min-width: 1300px) {
+  .section-landing-hero h1 {
+    line-height: 70px;
+  }
+}
+
+.landing-subscription-text {
+  text-align: -webkit-center;
+  text-align: center;
+}
+
+.testimoni-carousel {
+  .ant-carousel {
+    .slick-next {
+      right: 16px;
+    }
+    .slick-prev {
+      left: 16px;
+      z-index: 1;
+    }
+  }
+}
+
+.brand-title-video-container {
+  margin-left: 50px;
+  .ant-carousel {
+    min-width: 724px;
+    .slick-arrow {
+      transform: translate3d(0, -50%, 0);
+    }
+    .slick-track {
+      .slick-slide {
+        text-align: center;
+        width: 280px !important;
+        .landing-brand-video-container {
+          background-color: #211222 !important;
+          border-radius: 8px;
+          video {
+            border-radius: 8px;
+            width: 100%;
+            height: inherit;
+            object-fit: contain;
+          }
+        }
+      }
+      .slick-slide.slick-current {
+        .landing-brand-video-container {
+          position: relative;
+          width: 264px !important;
+          height: 470px !important;
+        }
+      }
+      .slick-slide:not(.slick-current) {
+        filter: blur(4px);
+        .landing-brand-video-container {
+          .brand-title-play-pause {
+            display: none;
+          }
+          width: 220px !important;
+          height: 391px !important;
+          margin-top: 42px;
+        }
+      }
+    }
+  }
+  .landing-video-carousel-button-wrapper {
+    background-color: #ffffff;
+    opacity: 0.7;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    svg {
+      width: 20px;
+      height: 20px;
+      position: absolute;
+      color: #0a0a0a;
+      top: 42%;
+      right: -52%;
+    }
+  }
+  .brand-title-play-pause {
+    position: absolute;
+    left: 122px;
+    transform: translate3d(0, -50%, 0);
+    top: 50%;
+    cursor: pointer;
+  }
+}
+
+.brand-title-container-mobile {
+  flex-direction: column-reverse !important;
+  min-height: 360px;
+  margin-bottom: 20px;
+}
+.brand-title-video-container-mobile {
+  margin-bottom: 20px;
+  .ant-carousel {
+    .slick-arrow {
+      transform: translate3d(0, -50%, 0);
+    }
+    .slick-track {
+      .slick-slide {
+        text-align: center;
+        .landing-brand-video-container {
+          position: relative;
+          background-color: #211222 !important;
+          border-radius: 8px;
+          width: inherit !important;
+          height: 320px;
+          video {
+            border-radius: 8px;
+            width: 100%;
+            max-width: 180px;
+            height: 320px;
+            object-fit: contain;
+          }
+        }
+      }
+    }
+  }
+  .landing-video-carousel-button-wrapper {
+    background-color: transparent;
+    opacity: 0.7;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    svg {
+      width: 20px;
+      height: 20px;
+      position: absolute;
+      color: #0a0a0a;
+      top: 42%;
+      right: -52%;
+    }
+  }
+  .brand-title-play-pause {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+  }
+}
+
+.brand-title-text {
+  max-width: 500px !important;
+  @media (max-width: 768px) {
+    button {
+      width: 110px !important;
+      min-width: 110px !important
+      ;
+    }
+  }
+}
+.landing-page-brand-try-demo {
+  background: @light-blue !important;
+}

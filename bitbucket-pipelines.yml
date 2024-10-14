@@ -1,0 +1,122 @@
+definitions:
+  caches:
+    yarn: /usr/local/share/.cache/yarn
+pipelines:
+  branches:
+    semantic-release:
+      - step:
+          name: 'Semantic-Release'
+          image: node:12.18.0-alpine
+          caches:
+            - yarn
+          script:
+            - apk add --no-cache  git openssh-client
+            - apt-get update && apt-get install -y curl jq
+            - >
+              export BB_TOKEN=$(curl -s -X POST -u "${CLIENT_ID}:${CLIENT_SECRET}" \
+                https://bitbucket.org/site/oauth2/access_token \
+                -d grant_type=client_credentials -d scopes="repository"| jq --raw-output '.access_token')
+            - yarn install --network-concurrency 1
+            - npx semantic-release --debug
+    development:
+      - step:
+          name: 'Build artifact'
+          image: node:12.18.0-alpine
+          deployment: Development
+          caches:
+            - yarn
+          script:
+            - apk add --no-cache git openssh
+            - yarn install --network-concurrency 1
+            - yarn build
+            - cp -R node_modules node_modules_temp
+            - apk add bash
+            - yarn clean:dep
+            - mv node_modules node_modules_clean
+            - mv node_modules_temp node_modules
+          artifacts:
+            - .next/**
+            - server-dist/**
+            - node_modules_clean/**
+      - step:
+          name: 'Push Docker Registry and Deploy to EKS'
+          image: evostech/eks-pipelines:1.0
+          caches:
+            - docker
+          services:
+            - docker
+          script:
+            - echo $(aws ecr get-login --region ${AWS_DEFAULT_REGION} --no-include-email) > login.sh
+            - sh login.sh
+            - docker build -t ${AWS_REGISTRY_URL}:dev-$BITBUCKET_BUILD_NUMBER -f Dockerfile_development .
+            - docker push ${AWS_REGISTRY_URL}:dev-$BITBUCKET_BUILD_NUMBER
+            - aws eks --region ${AWS_DEFAULT_REGION} update-kubeconfig --name ${AWS_CLUSTER_NAME}
+            - kubectl set image deployment/creatify-dev creatify-dev=${AWS_REGISTRY_URL}:dev-$BITBUCKET_BUILD_NUMBER -n fe-dev
+    staging:
+      - step:
+          name: 'Build artifact'
+          image: node:12.18.0-alpine
+          deployment: Staging
+          caches:
+            - yarn
+          script:
+            - apk add --no-cache git openssh
+            - yarn install --network-concurrency 1
+            - yarn build
+            - cp -R node_modules node_modules_temp
+            - apk add bash
+            - yarn clean:dep
+            - mv node_modules node_modules_clean
+            - mv node_modules_temp node_modules
+          artifacts:
+            - .next/**
+            - server-dist/**
+            - node_modules_clean/**
+      - step:
+          name: 'Push Docker Registry and Deploy to EKS'
+          image: evostech/eks-pipelines:1.0
+          caches:
+            - docker
+          services:
+            - docker
+          script:
+            - echo $(aws ecr get-login --region ${AWS_DEFAULT_REGION} --no-include-email) > login.sh
+            - sh login.sh
+            - docker build -t ${AWS_REGISTRY_URL}:stag-$BITBUCKET_BUILD_NUMBER -f Dockerfile_staging .
+            - docker push ${AWS_REGISTRY_URL}:stag-$BITBUCKET_BUILD_NUMBER
+            - aws eks --region ${AWS_DEFAULT_REGION} update-kubeconfig --name ${AWS_CLUSTER_NAME}
+            - kubectl set image deployment/creatify-stag creatify-stag=${AWS_REGISTRY_URL}:stag-$BITBUCKET_BUILD_NUMBER -n fe-stag
+    master:
+      - step:
+          name: 'Build artifact'
+          image: node:12.18.0-alpine
+          deployment: Production
+          caches:
+            - yarn
+          script:
+            - apk add --no-cache git openssh
+            - yarn install --network-concurrency 1
+            - yarn build
+            - cp -R node_modules node_modules_temp
+            - apk add bash
+            - yarn clean:dep
+            - mv node_modules node_modules_clean
+            - mv node_modules_temp node_modules
+          artifacts:
+            - .next/**
+            - server-dist/**
+            - node_modules_clean/**
+      - step:
+          name: 'Push Docker Registry and Deploy to EKS'
+          image: evostech/eks-pipelines:1.0
+          caches:
+            - docker
+          services:
+            - docker
+          script:
+            - echo $(aws ecr get-login --region ${AWS_DEFAULT_REGION} --no-include-email) > login.sh
+            - sh login.sh
+            - docker build -t ${AWS_REGISTRY_URL}:prod-$BITBUCKET_BUILD_NUMBER -f Dockerfile_production .
+            - docker push ${AWS_REGISTRY_URL}:prod-$BITBUCKET_BUILD_NUMBER
+            - aws eks --region ${AWS_DEFAULT_REGION} update-kubeconfig --name ${AWS_CLUSTER_NAME_PROD}
+            - kubectl set image deployment/creatify-prod creatify-prod=${AWS_REGISTRY_URL}:prod-$BITBUCKET_BUILD_NUMBER -n fe-prod
