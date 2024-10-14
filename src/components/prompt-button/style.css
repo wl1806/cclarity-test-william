@@ -1,0 +1,13 @@
+.prompt-btn {
+  width:90%;
+  border-radius: 10px;
+  border-color: #d1d1d1 !important;
+}
+
+.btn-prompt-img{
+  height: 20px;
+}
+
+.active-button {
+  background-color: #f6f6f6 !important;
+}

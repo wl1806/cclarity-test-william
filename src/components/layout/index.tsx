@@ -112,7 +112,7 @@ class LayoutComponent extends React.Component<IProps> {
                 />
               </Col>
               <Col>
-                <Text className='trial-text ph-1'>
+                <Text className='text-family-open-sans trial-text ph-1'>
                   TRIAL                  
                 </Text>
               </Col>
@@ -127,7 +127,7 @@ class LayoutComponent extends React.Component<IProps> {
           </Row>
         </Header>
         <Layout>
-          <Sider className='sider-wrap'>
+          <Sider className='sider-wrap ph-1'>
             <Col  span={24} className='sider-wrap-col'>
               <Row>
                 <Col span={24}>

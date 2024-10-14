@@ -12,9 +12,15 @@ const reducer: Reducer<any> = (
   action: any
 ): IMagicWriteState => {
   switch (action.type) {
+    case actionTypes.MAGIC_WRITE.FETCH_MAGIC_WRITE:
+      return {
+        ...state,
+        requesting:true
+      }
     case actionTypes.MAGIC_WRITE.SUBMIT_MAGIC_WRITE:
       return {
         ...state,
+        requesting: false,
         data: action.payload
       }
     default: {

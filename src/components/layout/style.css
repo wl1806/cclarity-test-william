@@ -1,7 +1,6 @@
 .trial-text {
   border: 1px solid #D1D1D1;
   background: #F6F6F6;
-  font-family: 'Open Sans';
   border-radius: 6px;
   color: #4F4F4F;
 }
@@ -36,9 +35,9 @@
 
 .sider-wrap{
   border-right: 1px solid #E7E7E7;
-  min-width: 80px !important;
-  max-width: 80px !important;
-  width: 80px !important;
+  min-width: 100px !important;
+  max-width: 100px !important;
+  width: 100px !important;
 }
 .sider-wrap-col{
   display: flex;

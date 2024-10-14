@@ -10,10 +10,18 @@ import Storage from '../../utils/general-particle/utils/storage'
 const GetSuggestion = (text: string, ctx?: any) => (dispatch: Dispatch<AnyAction>) => {
   // hit api then return
   dispatch(
-    action(ActionTypes.MAGIC_WRITE.SUBMIT_MAGIC_WRITE, {
-      suggestion: text+' Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua'
-    })
+    action(ActionTypes.MAGIC_WRITE.FETCH_MAGIC_WRITE)
   )
+
+  setTimeout(()=>{
+
+    dispatch(
+      action(ActionTypes.MAGIC_WRITE.SUBMIT_MAGIC_WRITE, {
+        suggestion: text+' Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua'
+      })
+    )
+  },1000)
+
   
 }
 

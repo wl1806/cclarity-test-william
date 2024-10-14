@@ -1,0 +1,24 @@
+.prompt-wrapper {
+  width: 70%;
+  margin: auto;
+}
+
+.btn-magic-img{
+  height: 20px;
+}
+
+.inactive-magic-button{
+  span {
+    color: #d1d1d1;
+  }
+}
+
+.active-magic-button{
+  background: #3B3B3B !important;
+  span {
+    color: #fff;
+  }
+}
+.magic-btn-wrapper {
+  width: 70%;
+}
