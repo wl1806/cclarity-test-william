@@ -3,8 +3,6 @@ import { AnyAction, Dispatch } from 'redux'
 import { action } from 'typesafe-actions'
 
 import ActionTypes from '../../constants/action-types'
-import ENV from '../../utils/environment'
-import Storage from '../../utils/general-particle/utils/storage'
 
 
 const GetUser = (ctx?: any) => (dispatch: Dispatch<AnyAction>) => {
