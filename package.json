@@ -8,6 +8,7 @@
     "build": "next build",
     "build-new": "next build && tsc --project tsconfig.server.json",
     "start": "next start",
+    "start-3001": "PORT=3001 next start",
     "lint": "next lint"
   },
   "dependencies": {

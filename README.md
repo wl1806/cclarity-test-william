@@ -25,6 +25,7 @@
 ```
 * yarn build
 * yarn start
+* if port used, can use yarn start-3001
 ```
 
 ## Directory Structure
