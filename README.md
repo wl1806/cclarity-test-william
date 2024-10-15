@@ -1,10 +1,10 @@
 ### Prerequisites
 
 ```
-* node >= 12
-* yarn
+* node >= v18.17.0
+* yarn >= 1.22.22
 ```
- 
+
 ### Installing
 
 ```
