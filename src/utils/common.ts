@@ -1,5 +1,5 @@
 import { message } from 'antd'
-import { ScreenMap } from 'antd/lib/_util/responsiveObserve'
+// import { ScreenMap } from 'antd/lib/_util/responsiveObserve'
 import { RcFile } from 'antd/lib/upload'
 import { useEffect } from 'react'
 
@@ -196,18 +196,18 @@ export const IsNumeric = (s: string) => {
   return true
 }
 
-export const scrollToTarget = (target: string, mq: ScreenMap) => {
-  const element = document.getElementById(target)
-  const headerOffset = mq.md ? 96 : 64
-  const elementPosition =
-    (element?.getBoundingClientRect().top || 0) + window.scrollY
-  const offsetPosition = elementPosition - headerOffset
+// export const scrollToTarget = (target: string, mq: ScreenMap) => {
+//   const element = document.getElementById(target)
+//   const headerOffset = mq.md ? 96 : 64
+//   const elementPosition =
+//     (element?.getBoundingClientRect().top || 0) + window.scrollY
+//   const offsetPosition = elementPosition - headerOffset
 
-  window.scrollTo({
-    top: offsetPosition,
-    behavior: 'smooth'
-  })
-}
+//   window.scrollTo({
+//     top: offsetPosition,
+//     behavior: 'smooth'
+//   })
+// }
 
 export default {
   RandomInt,

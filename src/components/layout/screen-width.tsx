@@ -1,9 +1,9 @@
-import { Breakpoint } from 'antd/lib/_util/responsiveObserve'
+// import { Breakpoint } from 'antd/lib/_util/responsiveObserve'
 import useBreakpoint from 'antd/lib/grid/hooks/useBreakpoint'
 import { FunctionComponent } from 'react'
 
 type ScreenWidthChildren = (
-  screenWidth: Partial<Record<Breakpoint, boolean>>
+  screenWidth: Partial<Record<any, boolean>>
 ) => any
 
 interface IScreenWidthProps {
