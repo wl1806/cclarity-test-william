@@ -1,29 +1,30 @@
-.prompt-btn {
+.promptBtn {
   width:90%;
   border-radius: 10px;
   border-color: #d1d1d1 !important;
 }
 
-.btn-prompt-img{
-  height: 20px;
+.btnPromptImg{
+  height: 20px !important;
 }
 
-.active-button {
+.activeButton {
   background-color: #f6f6f6 !important;
 }
-.prompt-text{
+.promptText{
   color: #6d6d6d;
 }
 @media screen and (max-width: 575px) {
-  .prompt-text{
+  .promptText{
     font-size: 14px;
   } 
 
-.btn-prompt-img{
+.btnPromptImg{
   height: 12px;
 }
-.prompt-btn {
+.promptBtn {
   width:96%;
+  padding:0;
 }
 
 }

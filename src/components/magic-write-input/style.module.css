@@ -1,0 +1,39 @@
+.promptWrapper {
+  width: 70%;
+  margin: auto;
+}
+
+.btnMagicImg{
+  height: 20px !important;
+}
+
+.inactiveMagicButton{
+  .buttonText{
+    color: #d1d1d1 !important;
+  }
+}
+
+.activeMagicButton{
+  background: #3B3B3B !important;
+  .buttonText {
+    color: #fff;
+  }
+}
+
+.magicBtnWrapper {
+  width: 70%;
+}
+.magicTextArea{
+  width: 70%;
+}
+@media screen and (max-width: 575px) {
+  .promptWrapper {
+    width: 100%;
+  }
+  .magicBtnWrapper {
+    width: 100%;
+  }
+  .magicTextArea{
+    width: 100%;
+  }
+}

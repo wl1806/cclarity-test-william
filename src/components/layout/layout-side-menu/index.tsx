@@ -1,8 +1,9 @@
-import { Col, Image, Row } from 'antd'
+import { Col, Image, Row, Typography } from 'antd'
 import React from 'react'
 import { useRouter } from 'next/router'
-import Text from 'antd/lib/typography/Text'
+import css from "./style.module.css";
 
+const {Text} = Typography
 interface IProps {
   text: string
   path: string
@@ -25,13 +26,15 @@ const LayoutSideMenu = (props: IProps) => {
                   <Row justify='center'>
                     <Image
                       wrapperClassName='side-menu-img-wrap'
-                      className='side-menu-img'
+
+                      className={css.sideMenuImg}
                       preview={false}
                       src={image}
                     />
                   </Row>
                   <Row justify='center'>
-                    <Text className={`${'text-family-open-sans'} ${isActive?'active-side-menu':'inactive-side-menu'}`}>
+                    <Text className={`${'text-family-open-sans'} ${isActive?css.activeSideMenu:css.inactiveSideMenu}`}>
+
                       {text}
                     </Text>
                   </Row>

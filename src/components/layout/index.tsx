@@ -1,7 +1,7 @@
 import useBreakpoint from "antd/lib/grid/hooks/useBreakpoint";
 
 import { Avatar, Button, Col, Image, Layout, Row, Typography } from "antd";
-import "./style.css";
+import css from "./style.module.css";
 import { WithRouterProps } from "next/dist/client/with-router";
 import { NextRouter, withRouter } from "next/router";
 import React from "react";
@@ -10,10 +10,10 @@ import { connect } from "react-redux";
 import IAUthState from "../../interfaces/states/auth";
 import { ReduxState } from "../../store/reducers";
 import SEO from "../seo";
-import Text from "antd/lib/typography/Text";
 import LayoutSideMenu from "./layout-side-menu";
 
 const { Content, Sider, Header } = Layout;
+const {Text} = Typography
 interface IProps extends WithRouterProps {
   children: React.ReactNode;
   className?: string;
@@ -125,7 +125,7 @@ class LayoutComponent extends React.Component<IProps, IState> {
     return (
       <Layout className={className}>
         <SEO />
-        <Header className={`header ${this.state.openSidebar ? "blur" : ""}`}>
+        <Header className={`${css.header} ${this.state.openSidebar ? css.blur : ""}`}>
           <Row
             align="middle"
             justify="space-between"
@@ -141,8 +141,8 @@ class LayoutComponent extends React.Component<IProps, IState> {
                     <div onClick={() => this.setState({ openSidebar: true })}>
                       <Image
                         id="burger"
-                        className="burger"
-                        wrapperClassName="burger-wrapper"
+                        className={css.burger}
+                        wrapperClassName={css.burgerWrapper}
                         src={"/images/burger.png"}
                         preview={false}
                       />
@@ -151,14 +151,14 @@ class LayoutComponent extends React.Component<IProps, IState> {
                 </Col>
                 <Col>
                   <Image
-                    wrapperClassName="logo-wrapper"
-                    className="logo-inner"
+                    wrapperClassName={`${css.logoWrapper}`}
+                    className={`${css.logoInner}`}
                     src="/images/logo.png"
                     preview={false}
                   />
                 </Col>
                 <Col>
-                  <Text className="text-family-open-sans trial-text ph-1">
+                  <Text className={`text-family-open-sans ${css.trialText} ph-1`}>
                     TRIAL
                   </Text>
                 </Col>
@@ -174,11 +174,11 @@ class LayoutComponent extends React.Component<IProps, IState> {
             <>
               <Sider
                 id="sider-component"
-                className={`sider-wrap ph-1 ${
-                  this.state.openSidebar ? "sider-wrap-active" : ""
+                className={`${css.siderWrap} ph-1 ${
+                  this.state.openSidebar ? css.siderWrapActive : ""
                 }`}
               >
-                <Col span={24} className="sider-wrap-col">
+                <Col span={24} className={css.siderWrapCol}>
                   <Row>
                     <Col span={24}>
                       {sideMenu.map((e) => {
@@ -209,8 +209,8 @@ class LayoutComponent extends React.Component<IProps, IState> {
               </Sider>
             </>
           ) : (
-            <Sider className="sider-wrap ph-1">
-              <Col span={24} className="sider-wrap-col">
+            <Sider className={`${css.siderWrap} ph-1`}>
+              <Col span={24} className={css.siderWrapCol}>
                 <Row>
                   <Col span={24}>
                     {sideMenu.map((e) => {
@@ -244,7 +244,7 @@ class LayoutComponent extends React.Component<IProps, IState> {
               </Col>
             </Sider>
           )}
-          <Content className={this.state.openSidebar ? "blur" : ""}>
+          <Content className={this.state.openSidebar ? css.blur : ""}>
             {children}
           </Content>
         </Layout>

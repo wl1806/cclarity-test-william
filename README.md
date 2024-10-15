@@ -1,7 +1,7 @@
 ### Prerequisites
 
 ```
-* node >= v18.17.0
+* node >= v18.12.0
 * yarn >= 1.22.22
 ```
 

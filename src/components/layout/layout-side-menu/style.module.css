@@ -1,0 +1,11 @@
+.sideMenuImg{
+  width: 40px !important;
+}
+
+.activeSideMenu{
+  color: #8331ec
+}
+.inactiveSideMenu{
+  color: #3B3B3B;
+}
+

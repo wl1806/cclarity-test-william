@@ -1,7 +1,7 @@
 import React from 'react'
-import { Button, Col, Image, Row } from 'antd'
-import './style.css'
-import Text from 'antd/lib/typography/Text'
+import { Typography, Button, Col, Image, Row } from 'antd'
+import css from './style.module.css'
+const {Text} = Typography
 
 interface IProps {
   text: string
@@ -19,15 +19,15 @@ const PromptButton = (props: IProps) => {
   return (
     <Row className='mb-1' justify='center'>
 
-      <Button className={`prompt-btn ${active?'active-button':''}`} onClick={onClick}>
+      <Button className={`${css.promptBtn} ${active?css.activeButton:''}`} onClick={onClick}>
         <Row>
           <Col>
       <Image
-        className='btn-prompt-img'
+        className={css.btnPromptImg}
         preview={false} src={image} />
         </Col>
         <Col>
-        <Text className='ml--5 prompt-text text-family-open-sans'>{isMobile?textM:text}</Text>
+        <Text className={`ml--5 ${css.promptText} text-family-open-sans`}>{isMobile?textM:text}</Text>
   </Col>
   </Row>
     </Button>

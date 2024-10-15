@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import IAUthState from '../../interfaces/states/auth'
 import IMagicWriteState from '../../interfaces/states/magic-write'
-import { Button, Col, Image, Input, Row } from 'antd'
-import Text from 'antd/lib/typography/Text'
+import { Button, Col, Image, Typography,Input, Row } from 'antd'
 import PromptButton from '../prompt-button'
-import './style.css'
+import css from './style.module.css'
+const {Text} = Typography
 
 interface IProps {
   auth: IAUthState
@@ -91,7 +91,7 @@ const [characterCount, setCharacterCount] = useState(0)
             What do you want to write today?
           </Text>
           </Row>
-          <Row justify='center' className={`prompt-wrapper ${isMobile?'mt-12':'mt-24'}`}>
+          <Row justify='center' className={`${css.promptWrapper} ${isMobile?'mt-12':'mt-24'}`}>
           {prompts.map(e=>{
             return <Col span={isMobile?12:8}>
               <PromptButton
@@ -119,30 +119,30 @@ const [characterCount, setCharacterCount] = useState(0)
       }}
       rows={10}
       placeholder=""
-      className='magic-text-area'
+      className={css.magicTextArea}
     />
         </Row>
         <Row className='w-100 pb-20' justify='center'>
-            <Row justify='space-between' className='mt-1 magic-btn-wrapper'>
+            <Row justify='space-between' className={`mt-1 ${css.magicBtnWrapper}`}>
 <div>
   {characterCount} characters
 </div>
             <Button 
             loading={loading}
             disabled={input===''} 
-            className={`${input===''?'inactive-magic-button':'active-magic-button'}`} 
+            className={`${input===''? css.inactiveMagicButton :css.activeMagicButton}`} 
             onClick={()=>MagicWrite(input)}
             >
             <Row>
               <Col>
               {loading?<></>:
           <Image
-            className='btn-magic-img'
+            className={css.btnMagicImg}
             preview={false} src={input===''?'/images/magic_white.png':'/images/magic_black.png'} />
               }
             </Col>
             <Col>
-            <Text className='ml--5 text-family-open-sans'>Magic write</Text>
+            <Text className={`${css.buttonText} ml--5 text-family-open-sans`}>Magic write</Text>
       </Col>
       </Row>
         </Button>
